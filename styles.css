@@ -1,60 +1,85 @@
+:root{
+    --font: #fcf8e8;
+    --background: #d4e2d4;
+    --hot-1: #ecb390;
+    --hot2: #df7861;
+}
+
 *{
     margin: 0;
     padding: 0;
 }
-html{
-    height: 100%;
-    overflow: hidden;
-}
+
 body{
-    background-color: rgb(168, 99, 14);
-    height: 100%;
-
-    
-}
-
-
-#heading{
-    margin:10px auto;
-    text-align: center;
-}
-
-#grid-container{
-    background-color: cornflowerblue;
-    width: 70vh;
-    height: 70vh;
-    position: absolute;
-    top: 10vh;
-    left: 50%;
-    border: 4px solid gainsboro;
-    transform: translate(-50%,0);
-    display: grid;
-    border-radius: 3px;
-  
-    }
-
-.grid-item{
-    
-    text-align: center;
-    border: 0.5px solid gray;
-    border-radius: 3px;
+    background-color: var(--font);
+    color: var(--hot2);
+    top: 0;
    
 }
-#controls{
-    position:absolute;
-    bottom: 10vh;
-    right: 50%;
-    transform: translateX(50%);
 
+#header{
+    box-sizing: border-box;
+    text-align: center;
+    margin: 1.5em 0;
 }
-button{
-    height: 3em;
-    width: 6em;
-    font-family: sans-serif;
-    background-color: greenyellow;
+#main{
+    position: relative;
+}
+
+.grid-container{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 70vh;
+    width:70vh;
+    display: grid;
+    
+    margin: 1.5em 0;
+}
+
+
+
+.grid-element{
+    border:0.01em solid hsla(210, 10%, 78%, 0.47);
+    
+}
+
+#clear-btn{
+    font-family: monospace;
+    display: inline-block;
+    width: 10em;
+    height: 4em;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--hot2);
+    color: var(--background);
+    font-size: 1em;
+    font-weight: 800;
     border: none;
     outline: none;
+    box-shadow: 5px 5px 8px #faaf9ee5;
+
+
 }
-button:hover{
-    background-color: hotpink;
+#clear-btn:hover{
+    color: var(--hot2);
+    background-color: var(--background);
+    border: none;
+    border: 2px solid gray;
+}
+
+
+#footer{
+    margin: 1%;
+    text-align: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+
+
+}
+
+#footer a{
+    text-decoration: none;
+    color: var(--hot-1);
 }

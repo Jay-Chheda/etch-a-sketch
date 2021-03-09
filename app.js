@@ -1,52 +1,74 @@
-const container = document.getElementById("grid-container");
-console.log(container);
+//select the main container
+let gridContainer = document.querySelector('.grid-container');
+//select the size change button
+const btnClear = document.getElementById('clear-btn');
+//loop to set default 4*4 grid
+//default grid template column
+gridContainer.style.gridTemplateColumns = "auto auto auto auto";
+for(let i=0;i<16;++i){
+    const gridElement = document.createElement('div');
+    gridElement.classList.add('grid-element');
+  
+    gridContainer.appendChild(gridElement);
+}
 
+// event listener for the button
+btnClear.addEventListener('click',changeSize);
 
-
-
-
-
-
-
-
-
-
-
-
-const button = document.querySelector('button');
-button.addEventListener('click',promptUser);
-
-function promptUser(){
-    let gridColumn = '';
-    let gridNumber = 0;
-    container.style.gridTemplateColumns = `${gridColumn}` ;
-    while(container.firstChild){
-        container.removeChild(container.firstChild);
+function changeSize(ev){
+    while(gridContainer.firstChild){
+        gridContainer.removeChild(gridContainer.firstChild);
     }
- 
-    while(!(gridNumber>=1 && gridNumber<=100)){
-       gridNumber=  Number(window.prompt('Choose number of columns for grid (1-100)!'));
+    gridContainer.style.gridTemplateColumns = '';
+    userSelectedSize = 0;
+     while(!(userSelectedSize>=1 && userSelectedSize<=100)){
+         userSelectedSize =  prompt('select a size between 1 and 100');
     }
-
-    
-    for(let i =1;i<=gridNumber;++i){
-
-        gridColumn+= ' auto'
-    
-    }
-    console.log(gridColumn);
-   
-    console.log(gridNumber);
-    container.style.gridTemplateColumns = `${gridColumn}` ;
-    
-    for(let i =1;i<=(gridNumber*gridNumber);++i){
-
-        const div = document.createElement('div');
-        div.classList.add('grid-item');
-        container.appendChild(div);
+    let gridColumnText = '';
+    for(let i=0;i<userSelectedSize;++i){
+        gridColumnText +=' auto';
         
     }
+    
+    for(let i=0; i<(userSelectedSize**2);++i){
+        const gridElement = document.createElement('div');
+        gridElement.classList.add('grid-element');
+        
+        gridContainer.appendChild(gridElement);
+    }
+    gridContainer.style.gridTemplateColumns = `${gridColumnText}`;
+    gridElements = document.querySelectorAll('.grid-element');
+    gridElements.forEach(element => { element.addEventListener('mouseover',changeColor) });
+
+    }
+
+    let gridElements = document.querySelectorAll('.grid-element');
+
+    gridElements.forEach(element => { element.addEventListener('mouseover',changeColor) });
+
+    function changeColor(ev){
+        
+        const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
+        const r = randomBetween(0, 255);
+        const g = randomBetween(0, 255);
+        const b = randomBetween(0, 255);
+        const rgb = `rgb(${r},${g},${b})`; 
+
+        this.style.backgroundColor = rgb;
+    }
+
+   
 
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
